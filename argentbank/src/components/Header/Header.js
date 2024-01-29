@@ -7,12 +7,14 @@ function Header() {
       <Link to="/">
         <img class="logo" src={logo} alt="Argent Bank Logo" />
       </Link>
-      <div>
-        <a class="sing-in" href="./sign-in.html">
-          <i></i>
-          Sign In
-        </a>
-      </div>
+      <Link to="/sing-in">
+        <div>
+          <a class="sing-in" href="./sign-in">
+            <i></i>
+            Sign In
+          </a>
+        </div>
+      </Link>
     </header>
   );
 }

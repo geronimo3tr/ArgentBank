@@ -1,0 +1,21 @@
+.icons-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+}
+
+.icon {
+  border: 10px solid #00bc77;
+  border-radius: 50%;
+  padding: 1rem;
+  width: 85px;
+  height: 85px;
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}/*# sourceMappingURL=icon.css.map */
