@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Singin() {
   return (
     <>
@@ -17,9 +19,9 @@ function Singin() {
               <input type="checkbox" id="remember-me" />
               <label for="remember-me">Remember me</label>
             </div>
-            <a href="./user.html" class="sign-in-button">
-              Sign In
-            </a>
+            <Link to="/user">
+              <button href="./user">Sign In</button>
+            </Link>
           </form>
         </section>
       </main>

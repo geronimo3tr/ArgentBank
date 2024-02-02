@@ -54,7 +54,7 @@ main {
   font-size: 1.2rem;
 }
 
-.sign-in-button {
+button {
   display: block;
   width: 100%;
   padding: 8px;
@@ -126,6 +126,15 @@ footer {
 
 .card-text {
   font-size: 1.2rem;
+}
+
+.title-edit {
+  color: white;
+}
+
+.absolute {
+  position: absolute;
+  width: auto;
 }
 
 body {
