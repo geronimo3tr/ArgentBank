@@ -79,6 +79,27 @@ button {
   height: 400px;
 }
 
+.bank-promotion {
+  position: absolute;
+  top: 100px;
+  right: 50px;
+  width: 300px;
+  margin: 2rem;
+  background: white;
+  padding: 2rem;
+}
+
+.highlight {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+.highlight-description {
+  font-size: 1.2rem;
+}
+
 .icons-container {
   display: flex;
   justify-content: space-around;
