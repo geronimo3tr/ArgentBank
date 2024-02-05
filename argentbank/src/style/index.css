@@ -30,43 +30,6 @@ main {
   flex: 1;
 }
 
-.sing-in-card {
-  position: absolute;
-  box-sizing: border-box;
-  background-color: white;
-  width: 300px;
-  margin: 0 auto;
-  margin-top: 3rem;
-  padding: 2rem;
-}
-
-.input-wrapper {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  margin-bottom: 1rem;
-}
-.input-wrapper label {
-  font-weight: bold;
-}
-.input-wrapper input {
-  padding: 5px;
-  font-size: 1.2rem;
-}
-
-button {
-  display: block;
-  width: 100%;
-  padding: 8px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-top: 1rem;
-  border-color: #00bc77;
-  background-color: #00bc77;
-  color: #fff;
-  text-align: center;
-}
-
 .background {
   height: 300px;
   position: relative;
@@ -129,24 +92,41 @@ footer {
   padding: 2rem 0 1.5rem;
 }
 
-.card {
+.sing-in-form {
   position: absolute;
-  top: 100px;
-  right: 50px;
+  box-sizing: border-box;
+  background-color: white;
   width: 300px;
-  margin: 2rem;
-  background: white;
+  margin: 0 auto;
+  margin-top: 3rem;
   padding: 2rem;
 }
 
-.card-title {
-  margin: 0px;
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.input-wrapper label {
   font-weight: bold;
-  font-size: 1.5rem;
+}
+.input-wrapper input {
+  padding: 5px;
+  font-size: 1.2rem;
 }
 
-.card-text {
-  font-size: 1.2rem;
+button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  text-align: center;
 }
 
 .title-edit {
