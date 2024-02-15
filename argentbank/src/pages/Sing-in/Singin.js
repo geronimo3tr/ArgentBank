@@ -1,9 +1,9 @@
-import Form from "../../components/Form/Form";
+import LoginForm from "../../components/LoginForm/LoginForm";
 
 function Singin() {
   return (
     <main className="dark-background">
-      <Form />
+      <LoginForm />
     </main>
   );
 }

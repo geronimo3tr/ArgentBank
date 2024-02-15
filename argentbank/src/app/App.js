@@ -3,11 +3,9 @@ import RouterArgentBank from "../components/RouterArgentBank/RouterArgentBank";
 
 function App() {
   return (
-    <>
-      <div>
-        <RouterArgentBank />
-      </div>
-    </>
+    <div>
+      <RouterArgentBank />
+    </div>
   );
 }
 

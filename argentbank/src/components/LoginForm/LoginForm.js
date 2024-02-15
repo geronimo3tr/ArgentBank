@@ -1,6 +1,6 @@
 import React from "react";
 
-function Form() {
+function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const login = {
@@ -59,4 +59,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default LoginForm;
