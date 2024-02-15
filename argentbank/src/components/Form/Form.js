@@ -1,8 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-
-axios.defaults.baseURL = "http://localhost:3001/api/v1/user";
 
 function Form() {
   const handleSubmit = async (e) => {
@@ -13,18 +9,27 @@ function Form() {
     };
 
     try {
-      const response = await axios.post("/login", login);
-      localStorage.setItem("token", response.data.token);
+      const response = await fetch("http://localhost:3001/api/v1/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(login),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+
+      const responseData = await response.json();
+      localStorage.setItem("token", responseData.token);
       window.location.href = "../user";
     } catch (error) {
-      if (error.response) {
-        if (error.response.status === 401 || error.response.status === 404) {
-          alert("Erreur dans l'identifiant ou le mot de passe");
-        } else {
-          alert("Une erreur est survenue. Réessayez plus tard.");
-        }
-      } else {
+      if (error instanceof SyntaxError || error instanceof TypeError) {
         alert("Une erreur réseau est survenue. Réessayez plus tard.");
+      } else {
+        alert(error.message || "Une erreur est survenue. Réessayez plus tard.");
       }
     }
   };
