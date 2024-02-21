@@ -1,38 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/action/login";
+import { useNavigate } from "react-router-dom";
 
-function LoginForm() {
+const LoginForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.userAuth.token != null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const login = {
-      email: document.querySelector("#email").value,
-      password: document.querySelector("#password").value,
-    };
-
     try {
-      const response = await fetch("http://localhost:3001/api/v1/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(login),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message);
-      }
-
-      const responseData = await response.json();
-      localStorage.setItem("token", responseData.token);
-      window.location.href = "../user";
+      await dispatch(login(email, password));
     } catch (error) {
-      if (error instanceof SyntaxError || error instanceof TypeError) {
-        alert("Une erreur réseau est survenue. Réessayez plus tard.");
-      } else {
-        alert(error.message || "Une erreur est survenue. Réessayez plus tard.");
-      }
+      console.error("Login failed:", error);
     }
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/user");
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <>
@@ -42,21 +33,21 @@ function LoginForm() {
         <form onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" />
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
           </div>
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
           </div>
           <div className="input-remember">
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          <button type="submit">Sign In</button>
+          <button type="submit">Sign-In</button>
         </form>
       </section>
     </>
   );
-}
+};
 
 export default LoginForm;
