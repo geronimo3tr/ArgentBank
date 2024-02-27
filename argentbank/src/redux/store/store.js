@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { thunk } from "redux-thunk";
-import reducer from "../reducer/userAuthSlice";
+import userAuthSlice from "../reducer/userAuthSlice";
+import profileSlice from "../reducer/profileSlice";
 
 export const store = configureStore({
   reducer: {
-    userAuth: reducer,
+    userAuth: userAuthSlice,
+    profile: profileSlice,
     middleware: [thunk],
     devTools: true,
   },
