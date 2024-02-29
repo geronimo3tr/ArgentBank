@@ -19,22 +19,29 @@ function EditUsername({ onClose }) {
 
   return (
     <>
-      <div className="overlay"></div>
-      <div className="edit-form">
-        <form onSubmit={handleSubmit}>
-          <label>New Username</label>
-          <i className="fa-solid fa-xmark edit-close" onClick={onClose}></i>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Enter your Username"
-            value={tempNewUsername}
-            onChange={handleUsernameChange}
-            required
-          />
-          <button type="submit">Save</button>
-        </form>
+      <div className="overlay">
+        <section className="edit-username-form">
+          <div className="title">
+            <i className="fas fa-xmark"></i>
+            <h1>New Username</h1>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="input-wrapper">
+              <label>New Username</label>
+
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your Username"
+                value={tempNewUsername}
+                onChange={handleUsernameChange}
+                required
+              />
+            </div>
+            <button type="submit">Save</button>
+          </form>
+        </section>
       </div>
     </>
   );
