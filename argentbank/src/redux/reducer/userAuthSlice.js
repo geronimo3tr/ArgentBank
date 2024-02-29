@@ -10,10 +10,8 @@ const userAuthSlice = createSlice({
   reducers: {
     loginReducer: (state, action) => {
       state.token = action.payload.token;
-      localStorage.setItem("token", action.payload.token);
     },
     logoutReducer: (state) => {
-      localStorage.removeItem("token");
       state.token = null;
     },
   },

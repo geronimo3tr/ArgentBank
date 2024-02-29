@@ -1,8 +1,10 @@
 import { setProfile } from "../reducer/profileSlice";
+import { store } from "../store/store";
 
 export const profile = () => {
   return async (dispatch) => {
-    const token = localStorage.getItem("token");
+    const state = store.getState();
+    const token = state.userAuth.token;
 
     // Call API to authenticate the user
     const profileResponse = await fetch("http://localhost:3001/api/v1/user/profile", {

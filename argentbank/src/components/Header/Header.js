@@ -2,6 +2,7 @@ import logo from "../../images/argentBankLogo.png";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutReducer } from "../../redux/reducer/userAuthSlice";
+import { resetProfile } from "../../redux/reducer/profileSlice";
 
 function Header() {
   const token = useSelector((state) => state.userAuth.token);
@@ -10,6 +11,7 @@ function Header() {
 
   const handleSingout = () => {
     dispatch(logoutReducer());
+    dispatch(resetProfile());
   };
 
   return (
