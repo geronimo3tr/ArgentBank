@@ -33,4 +33,10 @@ button {
   background-color: #00bc77;
   color: #fff;
   text-align: center;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }/*# sourceMappingURL=loginform.css.map */

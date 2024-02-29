@@ -28,8 +28,10 @@ const LoginForm = () => {
   return (
     <>
       <section className="sign-in-form">
-        <i className="fas fa-user-circle"></i>
-        <h1>Sign In</h1>
+        <div className="title">
+          <i className="fas fa-user-circle"></i>
+          <h1>Sign In</h1>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="email">Email</label>

@@ -1,29 +1,18 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { profile } from "../../redux/action/profile";
+import React from "react";
 
-function Account() {
-  const dispatch = useDispatch();
-  const name = useSelector((state) => state.profile.username);
-
-  const fetchUserProfile = () => {
-    dispatch(profile());
-  };
-
-  useEffect(() => {
-    fetchUserProfile();
-  }, [name]);
-
+function Account(props) {
   return (
     <>
-      <main className="dark-background">
-        <article className="title-edit">
-          <h1>welcome back {name} </h1>
-          <button className="edit-button" onClick={fetchUserProfile}>
-            Edit Name
-          </button>
-        </article>
-      </main>
+      <article className="account">
+        <div className="account-content-wrapper">
+          <h3 className="account-title">{props.title}</h3>
+          <p className="account-amount">{props.amount}</p>
+          <p className="account-amount-description">{props.description}</p>
+        </div>
+        <div className="account-content-wrapper cta">
+          <button className="transaction-button">view transaction</button>
+        </div>
+      </article>
     </>
   );
 }

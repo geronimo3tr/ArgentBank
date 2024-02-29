@@ -5,6 +5,7 @@ import { logoutReducer } from "../../redux/reducer/userAuthSlice";
 
 function Header() {
   const token = useSelector((state) => state.userAuth.token);
+
   const dispatch = useDispatch();
 
   const handleSingout = () => {
@@ -20,21 +21,24 @@ function Header() {
         <Link to="/sing-in">
           <div>
             <a className="sing-in" href="./sign-in">
-              <i></i>
+              <i className="fas fa-user-circle"></i>
               Sign In
             </a>
           </div>
         </Link>
       )}
       {token != null && (
-        <Link to="/" onClick={handleSingout}>
+        <>
           <div>
-            <a className="sing-in" href="./sign-in">
-              <i></i>
-              Sign out
-            </a>
+            <span>GBDF</span>
+            <Link to="/" onClick={handleSingout}>
+              <a className="sing-in" href="./sign-in">
+                <i></i>
+                Sign out
+              </a>
+            </Link>
           </div>
-        </Link>
+        </>
       )}
     </header>
   );
