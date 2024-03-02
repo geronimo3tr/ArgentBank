@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.userAuth.token != null);
@@ -15,6 +16,7 @@ const LoginForm = () => {
     try {
       await dispatch(login(email, password));
     } catch (error) {
+      setErrorMessage(error.message);
       console.error("Login failed:", error);
     }
   };
@@ -44,6 +46,9 @@ const LoginForm = () => {
           <div className="input-remember">
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
+          </div>
+          <div>
+            <a>{errorMessage}</a>
           </div>
           <button type="submit">Sign-In</button>
         </form>
