@@ -20,4 +20,8 @@ header {
 }
 .sing-in:hover {
   text-decoration: underline;
+}
+
+.logout-firstname {
+  display: flex;
 }/*# sourceMappingURL=header.css.map */

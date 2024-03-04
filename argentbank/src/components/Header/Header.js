@@ -6,6 +6,7 @@ import { resetProfile } from "../../redux/reducer/profileSlice";
 
 function Header() {
   const token = useSelector((state) => state.userAuth.token);
+  const firstName = useSelector((state) => state.profile.firstname);
 
   const dispatch = useDispatch();
 
@@ -31,8 +32,8 @@ function Header() {
       )}
       {token != null && (
         <>
-          <div>
-            <span>GBDF</span>
+          <div className="logout-firstname">
+            <span>{firstName}</span>
             <Link to="/" onClick={handleSingout}>
               <a className="sing-in" href="./sign-in">
                 <i></i>
