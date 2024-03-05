@@ -12,12 +12,13 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedEmail = localStorage.getItem("email");
-    const storedPassword = localStorage.getItem("password");
-
-    if (rememberMe && storedEmail && storedPassword) {
-      setEmail(storedEmail);
-      setPassword(storedPassword);
+    if (rememberMe) {
+      const storedEmail = localStorage.getItem("email");
+      const storedPassword = localStorage.getItem("password");
+      if (storedEmail && storedPassword) {
+        setEmail(storedEmail);
+        setPassword(storedPassword);
+      }
     }
   }, [rememberMe]);
 
@@ -25,12 +26,10 @@ const LoginForm = () => {
     e.preventDefault();
     try {
       await dispatch(login(email, password));
-
       if (rememberMe) {
         localStorage.setItem("email", email);
         localStorage.setItem("password", password);
       }
-
       navigate("/user");
     } catch (error) {
       setErrorMessage(error.message);
