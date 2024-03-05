@@ -6,7 +6,6 @@ export const profile = () => {
     const state = store.getState();
     const token = state.userAuth.token;
 
-    // Call API to authenticate the user
     const profileResponse = await fetch("http://localhost:3001/api/v1/user/profile", {
       method: "POST",
       headers: {

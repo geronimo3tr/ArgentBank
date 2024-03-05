@@ -2,12 +2,12 @@ import Account from "../../components/Account/Account";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { profile } from "../../redux/action/profile";
-import EditUsername from "../../components/Edit/EditUsername";
+import EditForm from "../../components/Edit/EditForm";
 
 function User() {
   const dispatch = useDispatch();
-  const username = useSelector((state) => state.profile.username);
   const [isEditing, setIsEditing] = useState(false);
+  const profileId = useSelector((state) => state.profile.id);
 
   const fetchUserProfile = () => {
     dispatch(profile());
@@ -18,10 +18,10 @@ function User() {
   }, []);
 
   const handleEdit = () => {
-    setIsEditing(true); // Set editing mode to true
+    setIsEditing(true);
   };
 
-  const displayUsername = username;
+  const displayUsername = localStorage.getItem(`username_${profileId}`);
 
   return (
     <>
@@ -32,7 +32,7 @@ function User() {
             Edit Name
           </button>
         </article>
-        {isEditing && <EditUsername onClose={() => setIsEditing(false)} />}
+        {isEditing && <EditForm onClose={() => setIsEditing(false)} />}
         <section className="account-card">
           <Account title="Argent Bank Checking (x8349)" amount="$2,082.79" description="Available Balance" />
           <Account title="Argent Bank Savings (x6712)" amount="$10,928.42" description="Available Balance" />

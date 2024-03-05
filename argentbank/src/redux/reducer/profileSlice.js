@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   username: "",
-
   firstname: null,
+  id: null,
 };
 
 const profileSlice = createSlice({
@@ -13,8 +13,9 @@ const profileSlice = createSlice({
     setProfile: (state, action) => {
       state.username = action.payload.userName;
       state.firstname = action.payload.firstName;
+      state.id = action.payload.id;
     },
-    setUsername: (state, action) => {
+    editUsername: (state, action) => {
       state.username = action.payload;
     },
     resetProfile: (state) => {
@@ -24,5 +25,5 @@ const profileSlice = createSlice({
   },
 });
 
-export const { setProfile, resetProfile, setUsername } = profileSlice.actions;
+export const { setProfile, resetProfile, editUsername } = profileSlice.actions;
 export default profileSlice.reducer;

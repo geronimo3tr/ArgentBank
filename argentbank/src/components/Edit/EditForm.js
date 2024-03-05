@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setUsername } from "../../redux/reducer/profileSlice";
+import { useDispatch, useSelector } from "react-redux"; // Importing useSelector from react-redux
 
-const EditUsername = ({ onClose }) => {
+import { editUsername } from "../../redux/reducer/profileSlice";
+
+const EditForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const [newUsername, setNewUsername] = useState("");
 
+  // Using useSelector to access Redux state
+  const profileId = useSelector((state) => state.profile.id);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Dispatch action to update username in Redux store
-    dispatch(setUsername(newUsername));
-    onClose(); // Close the edit username modal
+    dispatch(editUsername(newUsername));
+    localStorage.setItem(`username_${profileId}`, newUsername);
+    onClose();
   };
 
   return (
@@ -43,4 +47,4 @@ const EditUsername = ({ onClose }) => {
   );
 };
 
-export default EditUsername;
+export default EditForm;

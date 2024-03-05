@@ -13,22 +13,20 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (rememberMe) {
-      const storedEmail = localStorage.getItem("email");
-      const storedPassword = localStorage.getItem("password");
-      if (storedEmail && storedPassword) {
-        setEmail(storedEmail);
+      const storedPassword = localStorage.getItem(`password_${email}`);
+      if (storedPassword) {
         setPassword(storedPassword);
       }
     }
-  }, [rememberMe]);
+  }, [rememberMe, email]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await dispatch(login(email, password));
+
       if (rememberMe) {
-        localStorage.setItem("email", email);
-        localStorage.setItem("password", password);
+        localStorage.setItem(`password_${email}`, password);
       }
       navigate("/user");
     } catch (error) {
