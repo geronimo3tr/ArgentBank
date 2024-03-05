@@ -7,7 +7,6 @@ import { resetProfile } from "../../redux/reducer/profileSlice";
 function Header() {
   const token = useSelector((state) => state.userAuth.token);
   const firstName = useSelector((state) => state.profile.firstname);
-
   const dispatch = useDispatch();
 
   const handleSingout = () => {
@@ -21,12 +20,10 @@ function Header() {
         <img className="logo" src={logo} alt="Argent Bank Logo" />
       </Link>
       {token === null && (
-        <Link to="/sing-in">
+        <Link to="/sing-in" className="sing-in">
           <div>
-            <a className="sing-in" href="./sign-in">
-              <i className="fas fa-user-circle"></i>
-              Sign In
-            </a>
+            <i className="fas fa-user-circle"></i>
+            Sign In
           </div>
         </Link>
       )}
@@ -34,11 +31,9 @@ function Header() {
         <>
           <div className="logout-firstname">
             <span>{firstName}</span>
-            <Link to="/" onClick={handleSingout}>
-              <a className="sing-in" href="./sign-in">
-                <i></i>
-                Sign out
-              </a>
+            <Link to="/" className="sing-in" onClick={handleSingout}>
+              <i></i>
+              Sign out
             </Link>
           </div>
         </>
