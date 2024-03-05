@@ -1,20 +1,16 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setNewUsername } from "../../redux/reducer/profileSlice";
+import { useDispatch } from "react-redux";
+import { setUsername } from "../../redux/reducer/profileSlice";
 
-function EditUsername({ onClose }) {
+const EditUsername = ({ onClose }) => {
   const dispatch = useDispatch();
-  const [tempNewUsername, setTempNewUsername] = useState("");
-  const newUsername = useSelector((state) => state.profile.newUsername);
-
-  const handleUsernameChange = (e) => {
-    setTempNewUsername(e.target.value);
-  };
+  const [newUsername, setNewUsername] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(setNewUsername(tempNewUsername));
-    onClose();
+    // Dispatch action to update username in Redux store
+    dispatch(setUsername(newUsername));
+    onClose(); // Close the edit username modal
   };
 
   return (
@@ -34,8 +30,8 @@ function EditUsername({ onClose }) {
                 id="username"
                 name="username"
                 placeholder="Enter your Username"
-                value={tempNewUsername}
-                onChange={handleUsernameChange}
+                value={newUsername}
+                onChange={(e) => setNewUsername(e.target.value)}
                 required
               />
             </div>
@@ -45,6 +41,6 @@ function EditUsername({ onClose }) {
       </div>
     </>
   );
-}
+};
 
 export default EditUsername;

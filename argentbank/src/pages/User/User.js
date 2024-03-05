@@ -7,7 +7,6 @@ import EditUsername from "../../components/Edit/EditUsername";
 function User() {
   const dispatch = useDispatch();
   const username = useSelector((state) => state.profile.username);
-  const newUsername = useSelector((state) => state.profile.newUsername);
   const [isEditing, setIsEditing] = useState(false);
 
   const fetchUserProfile = () => {
@@ -22,7 +21,7 @@ function User() {
     setIsEditing(true); // Set editing mode to true
   };
 
-  const displayUsername = newUsername !== "" ? newUsername : username;
+  const displayUsername = username;
 
   return (
     <>
