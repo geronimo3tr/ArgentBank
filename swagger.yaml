@@ -101,6 +101,28 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
+  /user/transaction:
+    post:
+      tags:
+        - User Module
+      summary: Create a new transaction
+      description: API for creating a new transaction
+      parameters:
+        - in: body
+          name: body
+          description: Transaction data
+          required: true
+          schema:
+            $ref: "#/definitions/Transaction"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Transaction created successfully
+          schema:
+            $ref: "#/definitions/ApiResponse"
+      security:
+        - Bearer: []
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -164,6 +186,12 @@ definitions:
       Amount:
         type: number
         description: amount of the transaction
+      Sender_Account:
+        type: string
+        description: The sender's account number.
+      Currency_type:
+        type: string
+        description: The currency type
       Category:
         type: string
         description: category of the transaction
