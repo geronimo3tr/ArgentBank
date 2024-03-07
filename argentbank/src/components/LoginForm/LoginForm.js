@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/action/login";
 import { useNavigate } from "react-router-dom";
@@ -7,27 +7,14 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (rememberMe) {
-      const storedPassword = localStorage.getItem(`password_${email}`);
-      if (storedPassword) {
-        setPassword(storedPassword);
-      }
-    }
-  }, [rememberMe, email]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await dispatch(login(email, password));
-
-      if (rememberMe) {
-        localStorage.setItem(`password_${email}`, password);
-      }
       navigate("/user");
     } catch (error) {
       setErrorMessage(error.message);
@@ -52,7 +39,7 @@ const LoginForm = () => {
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
           </div>
           <div className="input-remember">
-            <input type="checkbox" id="remember-me" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
+            <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
           </div>
           <div>

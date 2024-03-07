@@ -21,18 +21,21 @@ function Header() {
       </Link>
       {token === null && (
         <Link to="/sing-in" className="sing-in">
-          <div>
-            <i className="fas fa-user-circle"></i>
-            Sign In
-          </div>
+          <i className="fas fa-user-circle"></i>
+          Sign In
         </Link>
       )}
       {token != null && (
         <>
           <div className="logout-firstname">
-            <span>{firstName}</span>
+            <div>
+              <Link to="/user" className="firstname">
+                <i className="fas fa-user-circle"></i>
+                <span>{firstName}</span>
+              </Link>
+            </div>
             <Link to="/" className="sing-in" onClick={handleSingout}>
-              <i></i>
+              <i className="fas fa-sign-out-alt"></i>
               Sign out
             </Link>
           </div>

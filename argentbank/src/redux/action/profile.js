@@ -16,7 +16,6 @@ export const profile = () => {
 
     if (profileResponse.ok) {
       const profileData = await profileResponse.json();
-      console.log("username:", profileData);
       dispatch(setProfile(profileData.body));
     } else {
       alert("erreur login");

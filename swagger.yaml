@@ -156,9 +156,11 @@ definitions:
     properties:
       userName:
         type: string
-  TransactionResponse:
+  Transaction:
     type: object
     properties:
+      id:
+        type: string
       Amount:
         type: number
         description: amount of the transaction

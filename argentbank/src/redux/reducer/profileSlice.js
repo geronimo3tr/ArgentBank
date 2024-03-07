@@ -15,7 +15,7 @@ const profileSlice = createSlice({
       state.firstname = action.payload.firstName;
       state.id = action.payload.id;
     },
-    editUsername: (state, action) => {
+    setUsername: (state, action) => {
       state.username = action.payload;
     },
     resetProfile: (state) => {
@@ -25,5 +25,5 @@ const profileSlice = createSlice({
   },
 });
 
-export const { setProfile, resetProfile, editUsername } = profileSlice.actions;
+export const { setProfile, resetProfile, setUsername } = profileSlice.actions;
 export default profileSlice.reducer;

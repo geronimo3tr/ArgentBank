@@ -7,7 +7,7 @@ import EditForm from "../../components/Edit/EditForm";
 function User() {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
-  const profileId = useSelector((state) => state.profile.id);
+  const displayUsername = useSelector((state) => state.profile.username);
 
   const fetchUserProfile = () => {
     dispatch(profile());
@@ -20,8 +20,6 @@ function User() {
   const handleEdit = () => {
     setIsEditing(true);
   };
-
-  const displayUsername = localStorage.getItem(`username_${profileId}`);
 
   return (
     <>
