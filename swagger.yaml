@@ -123,6 +123,49 @@ paths:
             $ref: "#/definitions/ApiResponse"
       security:
         - Bearer: []
+    get:
+      tags:
+        - User Module
+      summary: Retrieve transactions
+      description: API for retriving transaction
+      parameters:
+        - in: query
+          name: body
+          description: Transaction data
+          required: false
+          schema:
+            $ref: "#/definitions/Transaction"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Transaction retrived successfully
+          schema:
+            $ref: "#/definitions/ApiResponse"
+      security:
+        - Bearer: []
+  /user/transactions/{transactionId}:
+    delete:
+      tags:
+        - User Module
+      summary: Deleta a transaction
+      description: API for deleting transaction
+      parameters:
+        - in: body
+          name: transactionId
+          description: ID of the transaction to delete
+          required: true
+          schema:
+            $ref: "#/definitions/Transaction"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Transaction delete successfully
+          schema:
+            $ref: "#/definitions/ApiResponse"
+      security:
+        - Bearer: []
 securityDefinitions:
   Bearer:
     type: apiKey
