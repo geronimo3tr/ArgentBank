@@ -17,6 +17,8 @@ const userAuthSlice = createSlice({
     },
     logoutReducer: (state) => {
       state.token = null;
+      state.email = null;
+      state.password = null;
     },
   },
 });

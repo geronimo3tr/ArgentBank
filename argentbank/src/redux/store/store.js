@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { thunk } from "redux-thunk";
 import userAuthSlice from "../reducer/userAuthSlice";
 import profileSlice from "../reducer/profileSlice";
-import { persistReducer, persistStore } from "redux-persist";
+import { persistReducer, persistStore, PERSIST } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
@@ -16,9 +16,14 @@ export const store = configureStore({
   reducer: {
     userAuth: persistedUserAuthSlice,
     profile: persistedProfileSlice,
-    middleware: [thunk],
-    devTools: true,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [PERSIST],
+      },
+    }).concat(thunk), // Combining middleware correctly
+  devTools: true, // This should be outside of the reducer object
 });
 
 export const persistedStore = persistStore(store);
