@@ -22,8 +22,8 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [PERSIST],
       },
-    }).concat(thunk), // Combining middleware correctly
-  devTools: true, // This should be outside of the reducer object
+    }).concat(thunk),
+  devTools: true,
 });
 
 export const persistedStore = persistStore(store);
