@@ -144,6 +144,33 @@ paths:
             $ref: "#/definitions/ApiResponse"
       security:
         - Bearer: []
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Update a transaction
+      description: API for updating a transaction
+      parameters:
+        - in: body
+          name: body
+          description: Update transaction parametre
+          required: true
+          schema:
+            $ref: "#/definitions/Transaction"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Transaction updated successully
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        "400":
+          description: Invalid transaction data
+        "404":
+          description: Transaction not found
+        "500":
+          description: Internal Server Error
   /user/transaction/{transactionId}:
     get:
       tags:
@@ -172,11 +199,10 @@ paths:
           description: Internal Server Error
       security:
         - Bearer: []
-  /user/transactions/{transactionId}:
     delete:
       tags:
         - User Module
-      summary: Deleta a transaction
+      summary: Delete a transaction
       description: API for deleting transaction
       parameters:
         - in: body
