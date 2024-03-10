@@ -127,14 +127,13 @@ paths:
       tags:
         - User Module
       summary: Retrieve transactions
-      description: API for retriving transaction
+      description: API for retriving transaction of the current month
       parameters:
         - in: query
           name: body
           description: Transaction data
           required: true
-          schema:
-            $ref: "#/definitions/Transaction"
+          type: string
       produces:
         - application/json
       responses:
@@ -172,18 +171,17 @@ paths:
         "500":
           description: Internal Server Error
   /user/transaction/{transactionId}:
+    parameters:
+      - in: path
+        name: transactionId
+        description: ID of the transaction
+        required: true
+        type: string
     get:
       tags:
         - User Module
       summary: Retrieve a specific transactions
       description: API for retriving a specific transaction by ID
-      parameters:
-        - in: query
-          name: body
-          description: Transaction data
-          required: false
-          schema:
-            $ref: "#/definitions/Transaction"
       produces:
         - application/json
       responses:
@@ -204,13 +202,6 @@ paths:
         - User Module
       summary: Delete a transaction
       description: API for deleting transaction
-      parameters:
-        - in: body
-          name: transactionId
-          description: ID of the transaction to delete
-          required: true
-          schema:
-            $ref: "#/definitions/Transaction"
       produces:
         - application/json
       responses:
