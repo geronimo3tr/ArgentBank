@@ -18,4 +18,10 @@
   align-items: center;
   text-align: center;
   width: 100%;
+}
+
+@media (max-width: 920px) {
+  .icons-container {
+    flex-direction: column;
+  }
 }/*# sourceMappingURL=feature.css.map */
