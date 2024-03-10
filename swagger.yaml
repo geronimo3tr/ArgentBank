@@ -101,7 +101,7 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
-  /user/transaction:
+  /user/transactions:
     post:
       tags:
         - User Module
@@ -132,6 +132,28 @@ paths:
         - in: query
           name: body
           description: Transaction data
+          required: true
+          schema:
+            $ref: "#/definitions/Transaction"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Transaction retrived successfully
+          schema:
+            $ref: "#/definitions/ApiResponse"
+      security:
+        - Bearer: []
+  /user/transaction/{transactionId}:
+    get:
+      tags:
+        - User Module
+      summary: Retrieve a specific transactions
+      description: API for retriving a specific transaction by ID
+      parameters:
+        - in: query
+          name: body
+          description: Transaction data
           required: false
           schema:
             $ref: "#/definitions/Transaction"
@@ -142,6 +164,12 @@ paths:
           description: Transaction retrived successfully
           schema:
             $ref: "#/definitions/ApiResponse"
+        "400":
+          description: Invalid transaction ID
+        "404":
+          description: Transaction not found
+        "500":
+          description: Internal Server Error
       security:
         - Bearer: []
   /user/transactions/{transactionId}:
