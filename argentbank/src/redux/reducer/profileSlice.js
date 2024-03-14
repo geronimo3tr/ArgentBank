@@ -21,6 +21,7 @@ const profileSlice = createSlice({
     resetProfile: (state) => {
       state.username = "";
       state.firstname = null;
+      state.id = null;
     },
   },
 });
