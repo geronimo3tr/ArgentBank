@@ -5,12 +5,16 @@ import profileSlice from "../reducer/profileSlice";
 import { persistReducer, persistStore, PERSIST } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-const persistConfig = {
-  key: "root",
+const userAuthPersistConfig = {
+  key: "userAuth",
   storage,
 };
-const persistedUserAuthSlice = persistReducer(persistConfig, userAuthSlice);
-const persistedProfileSlice = persistReducer(persistConfig, profileSlice);
+const profilePersistConfig = {
+  key: "profile",
+  storage,
+};
+const persistedUserAuthSlice = persistReducer(userAuthPersistConfig, userAuthSlice);
+const persistedProfileSlice = persistReducer(profilePersistConfig, profileSlice);
 
 export const store = configureStore({
   reducer: {

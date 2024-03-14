@@ -1,4 +1,4 @@
-import { setProfile } from "../reducer/profileSlice";
+import { setProfile, resetProfile } from "../reducer/profileSlice";
 import { store } from "../store/store";
 
 export const profile = () => {
@@ -18,7 +18,8 @@ export const profile = () => {
       const profileData = await profileResponse.json();
       dispatch(setProfile(profileData.body));
     } else {
-      alert("erreur login");
+      dispatch(resetProfile());
+      window.location.href = "/sing-in";
     }
   };
 };
