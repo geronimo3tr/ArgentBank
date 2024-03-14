@@ -277,6 +277,9 @@ definitions:
       Sender_Account:
         type: string
         description: The sender's account number.
+      Receiver_Account:
+        type: string
+        description: The receiver account number.
       Currency_type:
         type: string
         description: The currency type
