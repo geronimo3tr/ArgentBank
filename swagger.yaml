@@ -120,29 +120,36 @@ paths:
         "200":
           description: Transaction created successfully
           schema:
-            $ref: "#/definitions/ApiResponse"
+            $ref: "#/definitions/Transaction"
       security:
         - Bearer: []
     get:
       tags:
         - User Module
       summary: Retrieve transactions
-      description: API for retriving transaction of the current month
+      description: API for retriving all transactions
       parameters:
         - in: query
-          name: body
-          description: Transaction data
+          name: userID
+          description: ID of the authenticated user
           required: true
           type: string
+        - in: header
+          name: Authorization
+          description: Bearer token for authentification
+          required: true
+          type: string
+          format: token
       produces:
         - application/json
       responses:
         "200":
           description: Transaction retrived successfully
           schema:
-            $ref: "#/definitions/ApiResponse"
+            $ref: "#/definitions/TransactionListResponse"
       security:
         - Bearer: []
+  /user/transactions/{transactionID}:
     put:
       security:
         - Bearer: []
@@ -151,29 +158,34 @@ paths:
       summary: Update a transaction
       description: API for updating a transaction
       parameters:
+        - in: path
+          name: transactionID
+          description: ID of the transaction
+          required: true
+          type: string
         - in: body
           name: body
           description: Update transaction parametre
           required: true
           schema:
-            $ref: "#/definitions/Transaction"
+            $ref: "#/definitions/TransactionUpdate"
       produces:
         - application/json
       responses:
         "200":
           description: Transaction updated successully
           schema:
-            $ref: "#/definitions/ApiResponse"
+            $ref: "#/definitions/TransactionUpdate"
         "400":
           description: Invalid transaction data
         "404":
           description: Transaction not found
         "500":
           description: Internal Server Error
-  /user/transaction/{transactionId}:
+  /user/transaction/{transactionID}:
     parameters:
       - in: path
-        name: transactionId
+        name: transactionID
         description: ID of the transaction
         required: true
         type: string
@@ -188,7 +200,7 @@ paths:
         "200":
           description: Transaction retrived successfully
           schema:
-            $ref: "#/definitions/ApiResponse"
+            $ref: "#/definitions/Transaction"
         "400":
           description: Invalid transaction ID
         "404":
@@ -207,8 +219,7 @@ paths:
       responses:
         "200":
           description: Transaction delete successfully
-          schema:
-            $ref: "#/definitions/ApiResponse"
+
       security:
         - Bearer: []
 securityDefinitions:
@@ -269,7 +280,7 @@ definitions:
   Transaction:
     type: object
     properties:
-      id:
+      transactionID:
         type: string
       Amount:
         type: number
@@ -290,3 +301,22 @@ definitions:
         type: string
         format: date-time
         description: date of the purchase
+      Note:
+        type: string
+        description: description of the transaction
+  TransactionUpdate:
+    type: object
+    properties:
+      Note:
+        type: string
+        description: description of the transaction
+      Category:
+        type: string
+        description: category of the transaction
+  TransactionListResponse:
+    type: object
+    properties:
+      transactions:
+        type: array
+        items:
+          $ref: "#/definitions/Transaction"

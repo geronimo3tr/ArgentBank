@@ -7,7 +7,8 @@ import EditForm from "../../components/Edit/EditForm";
 function User() {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
-  const displayUsername = useSelector((state) => state.profile.username);
+  const firstName = useSelector((state) => state.profile.firstname);
+  const lastName = useSelector((state) => state.profile.lastname);
 
   const fetchUserProfile = () => {
     dispatch(profile());
@@ -25,7 +26,9 @@ function User() {
     <>
       <main className="dark-profile-background">
         <article className="title-edit">
-          <h1>welcome back {displayUsername} </h1>
+          <h1>
+            welcome back {firstName} {lastName}
+          </h1>
           <button className="edit-button" onClick={handleEdit}>
             Edit Name
           </button>

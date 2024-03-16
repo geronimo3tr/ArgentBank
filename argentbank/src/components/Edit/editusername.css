@@ -17,4 +17,9 @@
   margin: 0 auto;
   margin-top: 3rem;
   padding: 2rem;
+}
+
+.edit-buttons {
+  display: flex;
+  gap: 10px;
 }/*# sourceMappingURL=editusername.css.map */

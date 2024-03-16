@@ -6,7 +6,7 @@ import { resetProfile } from "../../redux/reducer/profileSlice";
 
 function Header() {
   const token = useSelector((state) => state.userAuth.token);
-  const firstName = useSelector((state) => state.profile.firstname);
+  const displayUsername = useSelector((state) => state.profile.username);
   const dispatch = useDispatch();
 
   const handleSingout = () => {
@@ -31,7 +31,7 @@ function Header() {
             <div>
               <Link to="/user" className="firstname">
                 <i className="fas fa-user-circle"></i>
-                <span>{firstName}</span>
+                <span>{displayUsername}</span>
               </Link>
             </div>
             <Link to="/" className="sing-in" onClick={handleSingout}>
