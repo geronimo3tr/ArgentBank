@@ -22,4 +22,8 @@
 .edit-buttons {
   display: flex;
   gap: 10px;
+}
+
+.read-only-label {
+  color: black;
 }/*# sourceMappingURL=editusername.css.map */

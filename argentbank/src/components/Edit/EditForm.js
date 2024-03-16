@@ -24,14 +24,14 @@ const EditForm = ({ onClose }) => {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="input-wrapper">
-              <label>First Name</label>
+              <label className="read-only-label">First Name</label>
 
-              <input type="text" id="firstname" name="firstname" placeholder={firstName} readOnly required />
+              <input type="text" id="firstname" name="firstname" value={firstName} readOnly required />
             </div>
             <div className="input-wrapper">
-              <label>Last Name</label>
+              <label className="read-only-label">Last Name</label>
 
-              <input type="text" id="lastname" name="lastname" placeholder={lastName} readOnly required />
+              <input type="text" id="lastname" name="lastname" value={lastName} readOnly required />
             </div>
             <div className="input-wrapper">
               <label>New Username</label>
