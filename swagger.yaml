@@ -108,6 +108,12 @@ paths:
       summary: Create a new transaction
       description: API for creating a new transaction
       parameters:
+        - in: header
+          name: Authorization
+          description: Bearer token for authentification
+          required: true
+          type: string
+          format: token
         - in: body
           name: body
           description: Transaction data
