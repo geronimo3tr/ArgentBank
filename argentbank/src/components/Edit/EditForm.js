@@ -7,6 +7,7 @@ const EditForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const firstName = useSelector((state) => state.profile.firstname);
   const lastName = useSelector((state) => state.profile.lastname);
+  const username = useSelector((state) => state.profile.username);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,28 +25,29 @@ const EditForm = ({ onClose }) => {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="input-wrapper">
-              <label className="read-only-label">First Name</label>
-
-              <input type="text" id="firstname" name="firstname" value={firstName} readOnly required />
-            </div>
-            <div className="input-wrapper">
-              <label className="read-only-label">Last Name</label>
-
-              <input type="text" id="lastname" name="lastname" value={lastName} readOnly required />
-            </div>
-            <div className="input-wrapper">
               <label>New Username</label>
 
               <input
                 type="text"
                 id="username"
                 name="username"
-                placeholder="Enter your Username"
+                placeholder={username}
                 value={newUsername}
                 onChange={(e) => setNewUsername(e.target.value)}
                 required
               />
             </div>
+            <div className="input-wrapper">
+              <label className="read-only-label">First Name</label>
+
+              <input type="text" id="firstname" name="firstname" value={firstName} readOnly required disabled />
+            </div>
+            <div className="input-wrapper">
+              <label className="read-only-label">Last Name</label>
+
+              <input type="text" id="lastname" name="lastname" value={lastName} readOnly required disabled />
+            </div>
+
             <div className="edit-buttons">
               <button type="submit">Save</button>
               <button type="submit" onClick={onClose}>

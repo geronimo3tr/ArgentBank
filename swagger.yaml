@@ -163,6 +163,12 @@ paths:
           description: ID of the transaction
           required: true
           type: string
+        - in: header
+          name: Authorization
+          description: Bearer token for authentification
+          required: true
+          type: string
+          format: token
         - in: body
           name: body
           description: Update transaction parametre
@@ -189,6 +195,12 @@ paths:
         description: ID of the transaction
         required: true
         type: string
+      - in: header
+        name: Authorization
+        description: Bearer token for authentification
+        required: true
+        type: string
+        format: token
     get:
       tags:
         - User Module
