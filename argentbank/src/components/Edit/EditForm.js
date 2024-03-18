@@ -25,7 +25,7 @@ const EditForm = ({ onClose }) => {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="input-wrapper">
-              <label>New Username</label>
+              <label>User name</label>
 
               <input
                 type="text"
